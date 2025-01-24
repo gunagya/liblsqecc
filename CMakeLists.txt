@@ -105,7 +105,7 @@ if(USE_GRIDSYNTH)
     
     add_compile_definitions(USE_GRIDSYNTH)
     
-    set(RTS_LIBS_DIR ${GHC_LIB_DIR}/x86_64-linux-ghc-${GHC_VERSION}/)
+    set(RTS_LIBS_DIR ${GHC_LIB_DIR}/aarch64-osx-ghc-${GHC_VERSION}/)
     message(RTS_LIBS_DIR: ${RTS_LIBS_DIR})
     
     set(GRIDSYNTH_LIBS_DIR ${PROJECT_SOURCE_DIR}/external/rotation-decomposer/newsynth/)
@@ -115,13 +115,13 @@ if(USE_GRIDSYNTH)
             lsqecclib
             PUBLIC AFTER
             ${GRIDSYNTH_LIBS_DIR}/include
-            ${GHC_LIB_DIR}/x86_64-linux-ghc-${GHC_VERSION}/rts-${HASKELL_RTS_VERSION}/include # for HsFFI.h
+            ${GHC_LIB_DIR}/aarch64-osx-ghc-${GHC_VERSION}/rts-${HASKELL_RTS_VERSION}/include # for HsFFI.h
     )
     
     
     target_link_options(lsqecclib INTERFACE
             -L${GRIDSYNTH_LIBS_DIR} -lgridsynth_ccals -lHSnewsynth-0.4.0.0-inplace-ghc${GHC_VERSION}
-            -L${GHC_LIB_DIR}/x86_64-linux-ghc-${GHC_VERSION}/ -lHSrts-${HASKELL_RTS_VERSION}_debug-ghc${GHC_VERSION}
+            -L${GHC_LIB_DIR}/aarch64-osx-ghc-${GHC_VERSION}/ -lHSrts-${HASKELL_RTS_VERSION}_debug-ghc${GHC_VERSION}
             -Wl,-rpath,${GRIDSYNTH_LIBS_DIR}
             -Wl,-rpath,${RTS_LIBS_DIR}
     )
